@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.swiper-container {
+  width: 40%; /* تحديد العرض ليكون كامل */
+  height: 400px; /* تحديد ارتفاع السلايدر كما ترغب */
+  overflow: hidden; /* إخفاء أي محتوى زائد */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-container {
+    width: 40%;
+    height: 300px; /* تغيير الارتفاع في الأجهزة الصغيرة */
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  transition: 0.6s all !important;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
