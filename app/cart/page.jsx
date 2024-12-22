@@ -1,11 +1,26 @@
+'use client'
 import React from "react";
 import LayoutCart from "../components/layout/LayoutCart";
+import CartHeader from "../components/CartHeader";
+import { Button } from "@material-tailwind/react";
 
 const page = () => {
   return (
     <LayoutCart>
-      <div className="bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto">
-        {/* Header */}
+      <CartHeader/>
+      <div className="flex flex-col w-full justify-center items-center h-screen gap-[1em]">
+        <h1 className="text-xl font-thin">Your cart is empty</h1>
+        <p className="text-[#595959]">Spend 200 KD more and get free shipping!</p>
+        <Button className="text-white tracking-widest	text-md font-thin rounded-none">SHOP OUR PRODUCTS</Button>
+      </div>
+      <hr className="w-full"/>
+      <div>
+        <h1>Recently viewed</h1>
+        
+      </div>
+
+      {/* shwon when there is any products added */}
+      {/* <div className="bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto mt-[10em]">
         <h2 className="text-2xl font-semibold text-center mb-4 tracking-widest">
           CART
         </h2>
@@ -13,9 +28,7 @@ const page = () => {
           You are eligible for free shipping!
         </p>
 
-        {/* Cart Item */}
         <div className="flex items-center justify-between border-b pb-4">
-          {/* Product Details */}
           <div className="flex items-center">
             <img
               src="https://via.placeholder.com/120x150" // صورة المنتج
@@ -31,7 +44,6 @@ const page = () => {
             </div>
           </div>
 
-          {/* Quantity Controls */}
           <div className="flex items-center">
             <button className="border rounded-md w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100">
               –
@@ -42,18 +54,18 @@ const page = () => {
             </button>
           </div>
 
-          {/* Total Price */}
           <p className="text-gray-800 font-semibold">510 KD</p>
         </div>
 
-        {/* Remove & Checkout */}
         <div className="flex justify-end items-center mt-4 space-x-8">
           <button className="text-gray-500 hover:underline">REMOVE</button>
           <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800">
             CHECKOUT
           </button>
         </div>
-      </div>
+      </div> */}
+       
+
     </LayoutCart>
   );
 };

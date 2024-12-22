@@ -31,7 +31,7 @@ const HeadingPart = () => {
     <div className="w-full flex flex-col mt-[4em]">
       <h1 className="text-center text-2xl font-thin tracking-widest">SHOES</h1>
       <div className="w-full flex justify-between px-3  border-y-[1px] mt-3">
-        <div className="px-4 flex gap-2 justify-center items-center">
+        <div className="px-4 flex gap-2 justify-center items-center border-r-[1px] pr-[2em]">
           <IoGrid className="text-gray-500 text-lg"/>
           <BsFillGrid3X3GapFill className="text-lg"/>
         </div>

@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head></head>
-      <body className={`${roboto.className}`}>
+      <body className={`${roboto.className}`} suppressHydrationWarning={true}>
         <MainLayout>
           {children}
           <ScrollToTop/>

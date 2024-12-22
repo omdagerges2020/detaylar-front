@@ -18,12 +18,13 @@ const ThreeCards = () => {
           floated={false}
           shadow={false}
           color="transparent"
-          className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+          className="absolute inset-0 m-0 h-full w-full rounded-none  bg-cover bg-center"
+          style={{ backgroundImage: "url('/assets/images/homebags.png')" }}
         >
-          <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+          <div className="to-bg-black-10 absolute inset-0 h-full w-full" />
         </CardHeader>
         <CardBody className="relative py-14 px-6 md:px-12">
-          <Button className="w-fit bg-white text-black">BAGS</Button>
+          <Button className="w-fit bg-white animated-button  text-black font-thin tracking-widest text-md rounded-none hover:bg-transparent">BAGS</Button>
         </CardBody>
       </Card>
 
@@ -35,14 +36,16 @@ const ThreeCards = () => {
           floated={false}
           shadow={false}
           color="transparent"
-          className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+          className="absolute inset-0 m-0 h-full w-full rounded-none bg-cover bg-center"
+          style={{ backgroundImage: "url('/assets/images/homeclothes.png')" }}
         >
-          <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+          <div className="to-bg-black-10 absolute inset-0 h-full w-full" />
         </CardHeader>
         <CardBody className="relative py-14 px-6 md:px-12">
-          <Button className="w-fit bg-white text-black">CLOTHING</Button>
+          <Button className="w-fit bg-white animated-button hover:bg-transparent text-black font-thin tracking-widest text-md rounded-none">CLOTHING</Button>
         </CardBody>
       </Card>
+
       <Card
         shadow={false}
         className="relative grid h-[30rem] w-full max-w-[24rem] items-end justify-center overflow-hidden text-center"
@@ -51,12 +54,13 @@ const ThreeCards = () => {
           floated={false}
           shadow={false}
           color="transparent"
-          className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center"
+          className="absolute inset-0 m-0 h-full w-full rounded-none  bg-cover bg-center"
+          style={{ backgroundImage: "url('/assets/images/homeshoes.png')" }}
         >
-          <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
+          <div className="to-bg-black-10 absolute inset-0 h-full w-full" />
         </CardHeader>
         <CardBody className="relative py-14 px-6 md:px-12">
-          <Button className="w-fit bg-white text-black">SHOES</Button>
+          <Button className="w-fit bg-white animated-button hover:bg-transparent text-black font-thin tracking-widest text-md rounded-none">SHOES</Button>
         </CardBody>
       </Card>
     </div>

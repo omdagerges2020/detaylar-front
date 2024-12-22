@@ -12,11 +12,6 @@ import { getDataCollections } from "../ServerRequests";
 
 const page = async () => {
   const {data} = await getDataCollections() 
-  // console.log(data);
-
-  // const imageUrl = "http://192.168.1.117/detaylar/uploads/category/168795285932767-2-axe-spray-transparent-background_1-removebg-preview (1).png"
-
-  // console.log(imageUrl);
   
   return (
     <div className="px-5 flex flex-col justify-center items-center w-full mt-[10em]">

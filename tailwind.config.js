@@ -13,13 +13,13 @@ module.exports = ({
       screens: {
         'special': '900px',
       },
-      backgroundImage: {
-        'hero-pattern': "url('/app/images/img-2.png')",
-      }
+      // backgroundImage: {
+      //   'hero-pattern': "url(/assets/images/img-1.png)",
+      // }
     },
   },
   plugins: [
-    require('daisyui'),
+    // require('daisyui'),
   ],
 });
 

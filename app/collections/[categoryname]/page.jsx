@@ -1,10 +1,13 @@
 
 'use client'
 import { useState } from "react";
-import Cards from "@/app/components/productComponents/Cards";
-import Sidebar from "@/app/components/productComponents/SideMenue";
+// import Cards from "@/app/components/productComponents/Cards";
+// import Sidebar from "@/app/components/productComponents/SideMenue";
 import HeadingPart from "@/app/components/productComponents/HeadingPart";
 import Pagination from "@/app/components/productComponents/Paignation";
+import SideMenue from "@/app/components/categoryNameComponents/SideMenue";
+import Cards from "@/app/components/categoryNameComponents/Cards";
+import RecentlyViewed from "@/app/components/categoryNameComponents/RecentlyViewed";
 
 export default function Home() {
   const [pageHeight, setPageHeight] = useState(null);
@@ -16,8 +19,7 @@ export default function Home() {
 
 
   return (
-    <div className="mt-[10em]">category name page</div>
-    // <div className="w-full">
+    // <div className="w-full mt-[15em]">
     //   <HeadingPart/>
     //   <div
     //     className={
@@ -46,5 +48,16 @@ export default function Home() {
     //   <hr className="text-black"/>
 
     // </div>
+    <div className="mt-[12em] w-full flex flex-col mb-[2em]">
+      <HeadingPart/>
+      <div className="w-full mt-[3em] flex gap-[3em] px-3 py-2">
+        <SideMenue/>
+        <Cards/>
+      </div>
+      <Pagination/>
+      <hr className="w-full mt-4"/>
+      <RecentlyViewed/>
+    </div>
+ 
   );
 }

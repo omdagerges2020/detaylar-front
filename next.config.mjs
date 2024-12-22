@@ -10,7 +10,7 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ["thahab.com"], 
+    domains: ["thahab.com"],
   },
 };
 
