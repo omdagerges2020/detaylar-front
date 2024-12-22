@@ -5,18 +5,7 @@ import { Button } from "@material-tailwind/react";
 import MenuWithSearchInput from "./headerComponents/CountriesMenues";
 
 const CartHeader = () => {
-  const [open, setOpen] = useState(false);
-  const [openRight, setOpenRight] = useState(false);
-  const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
-  const openDrawerRight = () => setOpenRight(true);
-  const closeDrawerRight = () => setOpenRight(false);
-
-  const [openMenu, setOpenMenu] = useState(false);
-  const [openNav, setOpenNav] = useState(false);
-  const [changed, setChanged] = useState(false);
   const [header, setHeader] = useState(false);
-  const [lang, setLang] = useState("ENGLISH");
 
   const scrollHeader = () => {
     if (window.scrollY >= 20) {
@@ -58,12 +47,12 @@ const CartHeader = () => {
             : "flex flex-col justify-center items-center w-full bg-white border-b-2"
         }
       >
-        <div className="bg-black w-full text-white px-3 flex justify-between items-center">
+        <div className="bg-black w-full text-white px-3 flex justify-between items-center h-[42px]">
           <div>
-            <Button className="bg-white font-normal	 uppercase text-[12px] px-3 w-[80px] rounded-none	text-black">
+            <Button className="font-normal bg-transparent	 uppercase text-[12px] px-3 w-[80px] rounded-none	text-white">
               <Link href={`./`}>Women</Link>
             </Button>
-            <Button className="font-normal	 uppercase text-[12px] px-3 w-[80px] rounded-none	text-white">
+            <Button className="font-normal bg-transparent	 uppercase text-[12px] px-3 w-[80px] rounded-none	text-white">
               <Link href={`./`}>Men</Link>
             </Button>
           </div>

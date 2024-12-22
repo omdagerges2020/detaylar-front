@@ -10,24 +10,11 @@ import {
   MenuList,
   Drawer,
   Typography,
-} from "@material-tailwind/react";
-import {
   Dialog,
   DialogHeader,
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-import {
-  Bars4Icon,
-  GlobeAmericasIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  RectangleGroupIcon,
-  SquaresPlusIcon,
-  SunIcon,
-  TagIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/solid";
 import { Collapse, List, ListItem } from "@material-tailwind/react";
 
 import {
@@ -35,6 +22,10 @@ import {
   ChevronDownIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { IoClose } from "react-icons/io5";
+import { TbUserQuestion } from "react-icons/tb";
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 import { VscAccount } from "react-icons/vsc";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -66,8 +57,8 @@ const navListMenuItems = [
 ];
 
 function NavListMenu({ title }) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const renderItems = navListMenuItems.map(({ title }, key) => (
     <a href="#" key={key}>
       <MenuItem className="flex items-center gap-5 rounded-lg">
@@ -107,14 +98,17 @@ function NavListMenu({ title }) {
         <Menu
           open={isMenuOpen}
           handler={setIsMenuOpen}
-          offset={{ mainAxis: 20 }}
+          offset={{ mainAxis: 0 }}
           placement="bottom"
           allowHover={true}
         >
           <MenuHandler>
             <Typography as="div" variant="small" className="font-medium flex">
               <ListItem
-                className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+                className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900 hover:border-b-[2px]	hover:border-b-black	
+                 hover:shadow-none hover:rounded-none  after:absolute after:bottom-0 after:left-0 after:h-[2px] 
+                 after:w-0 after:bg-black after:transition-all after:duration-300 
+                 hover:after:w-full"
                 selected={isMenuOpen || isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen((cur) => !cur)}
               >
@@ -122,7 +116,7 @@ function NavListMenu({ title }) {
               </ListItem>
             </Typography>
           </MenuHandler>
-          <MenuList className="hidden max-w-screen-xl rounded-xl lg:flex w-full h-screen gap-[5em] px-[3em]">
+          <MenuList className="hidden max-w-screen-xl rounded-none lg:flex w-full h-[70vh] gap-[5em] px-[3em] transition-all duration-600 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4">
             <ul className="grid grid-cols-3 gap-y-2 gap-x-[6em] outline-none outline-0">
               {renderItems}
             </ul>
@@ -134,6 +128,7 @@ function NavListMenu({ title }) {
                 src="https://thahab.com/cdn/shop/files/k_600x.jpg?v=1733927279"
                 width={300}
                 height={50}
+                alt="shop-picture"
               />
               <div className="flex flex-col justify-center items-center">
                 <p className="text-sm font-thin">VALENTINO</p>
@@ -152,25 +147,26 @@ function NavListMenu({ title }) {
   );
 }
 
-function NavList() {
-  return (
-    <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
-      <NavListMenu title="DESIGNERS" />
-      <NavListMenu title="CLOTHING" />
-      <NavListMenu title="SHOES" />
-      <NavListMenu title="BAGS" />
-      <NavListMenu title="ACCESSORIES" />
-      <NavListMenu title="BEAUTY" />
-      <NavListMenu title="JEWELRY" />
-      <NavListMenu title="SALE" />
-      <NavListMenu title="HOME" />
-      <NavListMenu title="KIDS" />
-      <NavListMenu title="GIFTS" />
-    </List>
-  );
-}
+// function NavList() {
+//   return (
+//     <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
+//       <NavListMenu title="DESIGNERS" />
+//       <NavListMenu title="CLOTHING" />
+//       <NavListMenu title="SHOES" />
+//       <NavListMenu title="BAGS" />
+//       <NavListMenu title="ACCESSORIES" />
+//       <NavListMenu title="BEAUTY" />
+//       <NavListMenu title="JEWELRY" />
+//       <NavListMenu title="SALE" />
+//       <NavListMenu title="HOME" />
+//       <NavListMenu title="KIDS" />
+//       <NavListMenu title="GIFTS" />
+//     </List>
+//   );
+// }
 
 const Header = () => {
+  const [activeGender, setActiveGender] = useState("WOMEN");
   const { categories } = useSelector((state) => state.categoriesData);
   const dispatch = useDispatch();
 
@@ -178,14 +174,13 @@ const Header = () => {
     dispatch(getCategories());
   }, []);
 
-  console.log(categories?.data?.categories);
+  // console.log(categories?.data?.categories);
 
-  const navsLinksFilter = categories?.data?.categories.filter((name)=>{
-    return name.category_description !== "Men Fashion"
-  })
+  const navsLinksFilter = categories?.data?.categories.filter((name) => {
+    return name.category_description !== "Men Fashion";
+  });
 
-  console.log(navsLinksFilter);
-  
+  // console.log(navsLinksFilter);
 
   const [open, setOpen] = useState(false);
   const [openRight, setOpenRight] = useState(false);
@@ -199,6 +194,18 @@ const Header = () => {
   const [changed, setChanged] = useState(false);
   const [header, setHeader] = useState(false);
   const [lang, setLang] = useState("ENGLISH");
+  const [menuOpen, setMenuOpen] = useState(false); // لفتح القائمة عند الضغط على النقاط الثلاث
+
+  const handleOpen = () => setOpen(!open);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // منع إغلاق المودال عند النقر داخل المودال
+  const handleStopPropagation = (e) => {
+    e.stopPropagation();
+  };
 
   const scrollHeader = () => {
     if (window.scrollY >= 20) {
@@ -220,10 +227,12 @@ const Header = () => {
     );
   }, []);
 
+  const genderTab = [{ gender: "WOMEN" }, { gender: "MEN" }];
+
   return (
     <div className="w-full">
       <div className="w-full text-center">
-        <span className="text-[#353232]  top-0 px-4 text-sm py-3 w-full font-thin	tracking-widest	 text-center uppercase">
+        <span className="text-[#353232] top-0 px-4 text-sm py-3 w-full font-thin	tracking-widest	 text-center uppercase">
           Free Express shipping Above $200
         </span>
       </div>
@@ -234,14 +243,18 @@ const Header = () => {
             : "flex flex-col justify-center items-center w-full bg-white border-b-2 fixed z-10 top-8"
         }
       >
-        <div className="bg-black w-full text-white px-3 flex justify-between items-center">
+        <div className="bg-black w-full text-white px-3 flex justify-between items-center h-[42px]">
           <div>
-            <Button className="bg-white font-normal	 uppercase text-[12px] px-3 w-[80px] rounded-none	text-black">
-              <Link href={`./`}>Women</Link>
-            </Button>
-            <Button className="font-normal	 uppercase text-[12px] px-3 w-[80px] rounded-none	text-white">
-              <Link href={`./`}>Men</Link>
-            </Button>
+            {genderTab.map((gender, index) => (
+              <Link
+                href={{ pathname: "/", query: { gender: gender?.gender } }}
+                key={index}
+              >
+                <Button onClick={()=>setActiveGender(gender.gender)} className={`${activeGender === gender.gender ? "bg-white text-black" : "bg-transparent text-white"} font-normal uppercase text-[12px] px-3 w-[80px] rounded-none`}>
+                  {gender?.gender}
+                </Button>
+              </Link>
+            ))}
           </div>
           <div>
             <MenuWithSearchInput />
@@ -337,20 +350,6 @@ const Header = () => {
               </React.Fragment>
             </div>
 
-            {/* <div className=" lg:hidden  flex flex-wrap items-center justify-between text-blue-gray-900">
-              <IconButton
-                variant="text"
-                className="lg:hidden"
-                onClick={() => setOpenNav(!openNav)}
-              >
-                {openNav ? (
-                  <XMarkIcon className="h-6 w-6" strokeWidth={2} />
-                ) : (
-                  <Bars3Icon className="h-6 w-6" strokeWidth={2} />
-                )}
-              </IconButton>
-            </div> */}
-
             {/* nav links */}
             <div>
               <h1 className="tracking-[.5em] text-[30px]	">Detaylar</h1>
@@ -405,18 +404,96 @@ const Header = () => {
                   <span>Your cart is empty</span>
                 </div>
               </Drawer>
-
-              <IoIosHeart />
+              <IoIosHeart onClick={handleOpen} className="cursor-pointer" />
+              <Dialog
+                open={open}
+                handler={handleOpen}
+                animate={{
+                  mount: { scale: 1, y: 0 },
+                  unmount: { scale: 0.9, y: -100 },
+                }}
+                onClick={handleStopPropagation}
+                className="backdrop-none flex flex-col relative border-none rounded-none lg:min-w-[80%] lg:max-w-[90%] lg:max-h-[80vh] w-full h-screen"
+              >
+                <DialogFooter className="absolute w-full bg-[#434655] top-0 right-0">
+                  <div className="flex gap-5 w-full justify-end items-center">
+                    <div className="flex gap-3 items-center">
+                      <Link href="/">
+                        <TbUserQuestion className="text-white" />
+                      </Link>
+                      <Link
+                        href="/"
+                        className="border-none shadow-none text-white hover:border-none hover:shadow-none"
+                      >
+                        Guest Shopper
+                      </Link>
+                    </div>
+                    <IoClose
+                      className="cursor-pointer text-white"
+                      onClick={handleClose} // إغلاق المودال عند النقر على الأيقونة
+                    />
+                  </div>
+                </DialogFooter>
+                <DialogBody className="mt-[4em]">
+                  <div className="w-full px-[2em] flex flex-col p-3">
+                    <div className="flex justify-between items-center font-thin text-black">
+                      <h1 className="text-xl tracking-widest">My Wishlist</h1>
+                      <Menu placement="left">
+                        <MenuHandler>
+                          <BsThreeDotsVertical />
+                        </MenuHandler>
+                        <MenuList
+                          onClick={(e) => {
+                            e.preventDefault(); // Prevent default browser behavior
+                            e.stopPropagation(); // Prevent the Dialog from closing when interacting with the Menu
+                          }}
+                        >
+                          <MenuItem>Menu Item 1</MenuItem>
+                          <MenuItem>Menu Item 2</MenuItem>
+                          <MenuItem>Menu Item 3</MenuItem>
+                        </MenuList>
+                      </Menu>
+                    </div>
+                    <hr className="w-full mt-[2em]" />
+                  </div>
+                  <div className="mt-[6em] flex flex-col justify-center items-center mx-w-[300px] gap-4">
+                    <h1 className="font-bold">Love It? Add to My Wishlist</h1>
+                    <p>
+                      My Wishlist allows you to keep track of all of your
+                      favorites and shopping activity whether you're on your
+                      computer, phone, or tablet. You won't have to waste time
+                      searching all over again for that item you loved on your
+                      phone the other day - it's all here in one place!
+                    </p>
+                    <Button className="bg-[#434655]">Continue Shopping</Button>
+                  </div>
+                </DialogBody>
+              </Dialog>
             </div>
           </div>
 
           <div className="hidden lg:flex lg:justify-around w-full font-light mt-3">
             {/* <NavList /> */}
-            {categories?.data?.categories.map((name, index) => (
+            {/* {categories?.data?.categories.map((name, index) => (
               <List key={index}>
                 <NavListMenu title={name.category_description.name} />
               </List>
-            ))}
+            ))} */}
+
+            <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row gap-6 lg:p-1">
+              {/* {categories?.daat?.categories.map((name, index)=>(
+                <NavListMenu key={index} title="DESIGNERS" />
+            ))} */}
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+              <NavListMenu title="DESIGNERS" />
+            </List>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ import store from "./redux-system/store";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  const isLoginPage = pathname === "/login";
+  const isLoginPage = pathname === "/login" || pathname === "/cart";
    
 
   return (

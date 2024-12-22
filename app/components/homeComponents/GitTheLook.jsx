@@ -12,6 +12,7 @@ const GitTheLook = () => {
             src="https://thahab.com/cdn/shop/files/shop_the_lookkk_400x.progressive.jpg?v=1733930811"
             width={500}
             height={400}
+            alt="picture"
           />
         </div>
         <div className="flex flex-col gap-2 flex-shrink justify-center items-center">
@@ -20,6 +21,7 @@ const GitTheLook = () => {
             width={300}
             height={100}
             style={{width: "300px", height: "400px"}}
+            alt="picture"
           />
           <div className="flex flex-col max-w-56">
             <span>Stevie 100 Crystal-Embellished Pumps in Patent Leather</span>

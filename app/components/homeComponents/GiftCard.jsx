@@ -13,6 +13,7 @@ const GiftCard = () => {
             src="https://thahab.com/cdn/shop/files/GiftCard-01-01_600x.jpg?v=1702909040"
             width={400}
             height={300}
+            alt="picture"
           />
         </div>
         <div className="flex flex-col gap-2 flex-shrink justify-center items-center">
