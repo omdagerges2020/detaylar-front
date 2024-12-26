@@ -8,7 +8,9 @@ export const getCategories = createAsyncThunk(
 
     const options = {
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/getHomePageInit`,
+
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getHomePageInit`,
+
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
         "Content-Type": "application/json",
@@ -17,7 +19,7 @@ export const getCategories = createAsyncThunk(
 
     try {
       const response = await axios(options);
-      console.log(response.data);
+      // console.log(response.data);
       
   
       return response.data;

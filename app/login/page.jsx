@@ -81,8 +81,10 @@ const LoginPage = () => {
     alert("Logged out successfully!");
   };
 
+
   return (
     <LayoutLogin>
+
       <div className="bg-[#FAFAFA] flex justify-center items-center w-full h-screen px-4 sm:px-6 lg:px-8">
         <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
           {userToken ? (
@@ -155,6 +157,7 @@ const LoginPage = () => {
             </form>
           )}
         </div>
+
       </div>
     </LayoutLogin>
   );

@@ -11,7 +11,7 @@ module.exports = ({
   theme: {
     extend: {
       screens: {
-        'special': '900px',
+        'xs': '480px',
       },
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],

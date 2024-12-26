@@ -8,7 +8,7 @@ export const getClollections = createAsyncThunk(
 
     const options = {
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/getCategories`,
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getCategories`,
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
         "Content-Type": "application/json",
@@ -17,9 +17,7 @@ export const getClollections = createAsyncThunk(
 
     try {
       const response = await axios(options);
-      console.log(response.data);
-      
-  
+      // console.log(response.data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err);
@@ -30,9 +28,9 @@ export const getClollections = createAsyncThunk(
 const getCollectionsSlice = createSlice({
   name: "getcollectionsslice",
   initialState: {
+    collections: {},
     loading: false,
     erorr: null,
-    collections: [],
   },
   extraReducers: (builder) => {
     builder.addCase(getClollections.pending, (state) => {

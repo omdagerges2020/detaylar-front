@@ -3,16 +3,11 @@ import { collectionData } from "./slices/collectionsSlice";
 import { categoriesData } from "./slices/categoriesSlice";
 import { categoryProductsData } from "./slices/categoryProductsSlice";
 import {login} from "./slices/loginSlice";
-// import {register} from "./slices/registerSlice"; 
+import { productDetailsData } from "./slices/productDetailsSlice";
+import { headerCategoriesData } from "./slices/categoriesHeaderSlice";
 
 const store = configureStore({
-  reducer: {
-    collectionData,
-    categoriesData,
-    categoryProductsData,
-    login,
-    // register,
-  },
+  reducer: { collectionData, categoriesData, categoryProductsData, productDetailsData, headerCategoriesData, login, },
 });
 
 export default store;
