@@ -22,15 +22,24 @@ export default function Home({ params }) {
   
   const [pageHeight, setPageHeight] = useState(null);
 
-  window.addEventListener("scroll", () => {
-    setPageHeight(window.scrollY);
-    // console.log(pageHeight); 
-  });
+  // window.addEventListener("scroll", () => {
+  //   setPageHeight(window.scrollY);
+  // });
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setPageHeight(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(getCategoryProducts(params.categoryname));
+    dispatch(getCategoryProducts(params?.categoryname));
   },[])
 
 
@@ -45,6 +54,5 @@ export default function Home({ params }) {
       <hr className="w-full mt-4"/>
       <RecentlyViewed/>
     </div>
- 
   );
 }
