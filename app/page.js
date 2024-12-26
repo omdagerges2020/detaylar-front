@@ -10,6 +10,7 @@ import GitTheLook from "./components/homeComponents/GitTheLook";
 import GiftCard from "./components/homeComponents/GiftCard";
 import Aboutus from "./components/homeComponents/Aboutus";
 import { useSearchParams } from "next/navigation";
+
 import Link from "next/link";
 import HomeMen from "./components/HomeMen";
 import SliderHome from "./components/homeComponents/SliderHome";

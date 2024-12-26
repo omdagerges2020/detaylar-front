@@ -8,7 +8,9 @@ export const getCategories = createAsyncThunk(
 
     const options = {
       method: "GET",
+
       url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getHomePageInit`,
+
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
         "Content-Type": "application/json",

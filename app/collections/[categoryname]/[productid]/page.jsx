@@ -12,6 +12,7 @@ import { TbRuler2 } from "react-icons/tb";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Image from "next/image";
+
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa";
 import CardCarousel from "@/app/components/categoryNameComponents/carosel";

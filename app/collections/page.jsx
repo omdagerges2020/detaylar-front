@@ -7,6 +7,7 @@ import {
   Button,
 } from "@/app/ClientImports";
 import "./collection.css";
+
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getClollections } from "../redux-system/slices/collectionsSlice";
@@ -21,16 +22,6 @@ const page = () => {
     dispatch(getClollections());
   }, []);
 
-  // console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
-
-  // const imageUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/uploads/category/168795285932767-2-axe-spray-transparent-background_1-removebg-preview%20(1).png`;
-  // console.log(imageUrl);
-
-  // {
-  //   collections?.men?.map((card, index) =>
-  //     // console.log(card.image.replace(/ /g, "%20"))
-  //   );
-  // }
 
   return (
     <div className="px-5 flex flex-col justify-center items-center w-full mt-[10em]">
@@ -89,6 +80,7 @@ const page = () => {
                   process.env.NEXT_PUBLIC_API_BASE_URL
                 }/${card.image.replace(/ /g, "%20")})`,
               }}
+
             >
               <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
             </CardHeader>
@@ -116,9 +108,10 @@ const page = () => {
                 variant="h5"
                 className="mb-4 absolute bottom-[6rem] text-white text-2xl left-[-3rem] w-full"
               >
-                <p>{card.category_description.name}</p>
+                <p className = 'uppercase' >{card.category_description.name}</p>
               </div>
               <div className="absolute bottom-6 w-full left-[-3rem]">
+
                 <Button className="btn">
                   <Link href={`/collections/${card.category_id}`}>View Products</Link>
                 </Button>
