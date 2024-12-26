@@ -12,7 +12,7 @@ const ThreeCards = () => {
     <div className="flex flex-wrap justify-center items-center gap-4 mt-[3em]">
       <Card
         shadow={false}
-        className="relative grid h-[30rem] w-full max-w-[20rem] items-end justify-center overflow-hidden text-center"
+        className="relative grid h-[30rem] w-full max-w-[24rem] items-end justify-center overflow-hidden text-center"
       >
         <CardHeader
           floated={false}

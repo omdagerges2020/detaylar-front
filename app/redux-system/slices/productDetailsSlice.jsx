@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getCategories = createAsyncThunk(
-  "getcollections",
+export const getProductDetails = createAsyncThunk(
+  "getproductdetails",
   async (id, ThunkAPI) => {
     const { rejectWithValue } = ThunkAPI;
 
     const options = {
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getHomePageInit`,
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/productDetail/${id}`,
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
         "Content-Type": "application/json",
@@ -18,8 +18,6 @@ export const getCategories = createAsyncThunk(
     try {
       const response = await axios(options);
       // console.log(response.data);
-      
-  
       return response.data;
     } catch (err) {
       return rejectWithValue(err);
@@ -27,26 +25,26 @@ export const getCategories = createAsyncThunk(
   }
 );
 
-const getCategoriesSlice = createSlice({
-  name: "getcategories",
+const productDetailsSlice = createSlice({
+  name: "getproductdetails",
   initialState: {
+    productDetails: {},
     loading: false,
     erorr: null,
-    categories: null,
   },
   extraReducers: (builder) => {
-    builder.addCase(getCategories.pending, (state) => {
+    builder.addCase(getProductDetails.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getCategories.fulfilled, (state, action) => {
+    builder.addCase(getProductDetails.fulfilled, (state, action) => {
       state.loading = false;
-      state.categories = action.payload;
+      state.productDetails = action.payload;
     });
-    builder.addCase(getCategories.rejected, (state, action) => {
+    builder.addCase(getProductDetails.rejected, (state, action) => {
       state.loading = false;
       state.erorr = action.payload.message;
     });
   },
 });
 
-export const categoriesData = getCategoriesSlice.reducer;
+export const productDetailsData = productDetailsSlice.reducer;

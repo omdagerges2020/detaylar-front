@@ -1,6 +1,7 @@
 import React from "react";
 import SimpleRegistrationForm from "../components/loginComponents/LoginForm";
 import LayoutLogin from "../components/layout/LayoutLogin";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -27,12 +28,13 @@ const page = () => {
               placeholder="Email"
             />
           </div>
-          <button
+          <Link
+            href="/login/profile"
             type="submit"
             class="w-full bg-black text-white font-semibold py-2 px-4 rounded-lg focus:outline-none "
           >
             Continue
-          </button>
+          </Link>
           <span className="mt-3">Privacy</span>
         </form>
       </div>

@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getCategories = createAsyncThunk(
-  "getcollections",
+export const getHeaderCategories = createAsyncThunk(
+  "",
   async (id, ThunkAPI) => {
     const { rejectWithValue } = ThunkAPI;
 
     const options = {
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getHomePageInit`,
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getCategories`,
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
         "Content-Type": "application/json",
@@ -27,26 +27,26 @@ export const getCategories = createAsyncThunk(
   }
 );
 
-const getCategoriesSlice = createSlice({
-  name: "getcategories",
+const categoriesHeaderSlice = createSlice({
+  name: "categoriesHeaderSlice",
   initialState: {
     loading: false,
     erorr: null,
-    categories: null,
+    headerCategories: null,
   },
   extraReducers: (builder) => {
-    builder.addCase(getCategories.pending, (state) => {
+    builder.addCase(getHeaderCategories.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getCategories.fulfilled, (state, action) => {
+    builder.addCase(getHeaderCategories.fulfilled, (state, action) => {
       state.loading = false;
-      state.categories = action.payload;
+      state.headerCategories = action.payload;
     });
-    builder.addCase(getCategories.rejected, (state, action) => {
+    builder.addCase(getHeaderCategories.rejected, (state, action) => {
       state.loading = false;
       state.erorr = action.payload.message;
     });
   },
 });
 
-export const categoriesData = getCategoriesSlice.reducer;
+export const headerCategoriesData = categoriesHeaderSlice.reducer;

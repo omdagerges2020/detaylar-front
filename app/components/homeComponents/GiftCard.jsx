@@ -7,8 +7,8 @@ const GiftCard = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-4 mt-[4em]">
       <h1 className="mb-4 text-2xl tracking-wider">Gift Card</h1>
-      <div className="flex gap-[3em] items-start">
-        <div className="flex-1">
+      <div className="flex lg:flex-row flex-col gap-[3em] items-start">
+        <div className="lg:flex-1 w-full">
           <Image
             src="https://thahab.com/cdn/shop/files/GiftCard-01-01_600x.jpg?v=1702909040"
             width={400}

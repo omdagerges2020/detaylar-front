@@ -11,7 +11,7 @@ module.exports = ({
   theme: {
     extend: {
       screens: {
-        'special': '900px',
+        'xs': '480px',
       },
       // backgroundImage: {
       //   'hero-pattern': "url(/assets/images/img-1.png)",

@@ -34,6 +34,7 @@ import MenuWithSearchInput from "./headerComponents/CountriesMenues";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../redux-system/slices/categoriesSlice";
+import { getHeaderCategories } from "../redux-system/slices/categoriesHeaderSlice";
 
 const languages = [
   {
@@ -74,6 +75,7 @@ function NavListMenu({ title }) {
             variant="paragraph"
             className="text-xs !font-medium text-blue-gray-500"
           >
+            {/* sub categories */}
             <ul className="text-xl font-thin">
               <li>ALL CLOTHES</li>
               <li>DRESSES</li>
@@ -167,18 +169,18 @@ function NavListMenu({ title }) {
 
 const Header = () => {
   const [activeGender, setActiveGender] = useState("WOMEN");
-  const { categories } = useSelector((state) => state.categoriesData);
+  const { headerCategories } = useSelector((state) => state.headerCategoriesData);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getHeaderCategories());
   }, []);
 
   // console.log(categories?.data?.categories);
 
-  const navsLinksFilter = categories?.data?.categories.filter((name) => {
-    return name.category_description !== "Men Fashion";
-  });
+  // const navsLinksFilter = categories?.data?.categories.filter((name) => {
+  //   return name.category_description !== "Men Fashion";
+  // });
 
   // console.log(navsLinksFilter);
 
@@ -231,16 +233,16 @@ const Header = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full text-center">
+      {/* <div className="w-full text-center">
         <span className="text-[#353232] top-0 px-4 text-sm py-3 w-full font-thin	tracking-widest	 text-center uppercase">
           Free Express shipping Above $200
         </span>
-      </div>
+      </div> */}
       <div
         className={
           header
             ? "flex flex-col justify-center items-center w-full bg-white border-b-2 fixed z-10 top-0"
-            : "flex flex-col justify-center items-center w-full bg-white border-b-2 fixed z-10 top-8"
+            : "flex flex-col justify-center items-center w-full bg-white border-b-2 fixed z-10 top-0"
         }
       >
         <div className="bg-black w-full text-white px-3 flex justify-between items-center h-[42px]">
@@ -256,9 +258,9 @@ const Header = () => {
               </Link>
             ))}
           </div>
-          <div>
+          {/* <div>
             <MenuWithSearchInput />
-          </div>
+          </div> */}
         </div>
 
         {/* language selector and websiteName and icons*/}
@@ -351,11 +353,12 @@ const Header = () => {
             </div>
 
             {/* nav links */}
-            <div>
-              <h1 className="tracking-[.5em] text-[30px]	">Detaylar</h1>
+            <div className="flex flex-col justify-center items-center">
+              <Image width={40} height={40} src={`/assets/images/logo.png`}/>
+              <h1 className="tracking-[.5em] font-[600] text-[30px]">DETAYLAR</h1>
             </div>
             {/* icons */}
-            <div className="flex text-[25px] font-bold gap-2">
+            <div className="flex flex-col lg:flex-row text-[25px] font-bold gap-2">
               <VscAccount className="hidden lg:block" />
               <IoSearch />
               <MdOutlineShoppingBag
@@ -481,18 +484,11 @@ const Header = () => {
             ))} */}
 
             <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row gap-6 lg:p-1">
-              {/* {categories?.daat?.categories.map((name, index)=>(
-                <NavListMenu key={index} title="DESIGNERS" />
-            ))} */}
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
-              <NavListMenu title="DESIGNERS" />
+              {activeGender === "WOMEN" ?  headerCategories?.women?.map((li, index)=>(
+                <NavListMenu key={index} title={li.category_description.name} />
+            )) : headerCategories?.men?.map((li, index)=>(
+              <NavListMenu key={index} title={li.category_description.name} />
+            ))}
             </List>
           </div>
         </div>

@@ -1,73 +1,6 @@
-// 'use client'
-// import { useState } from "react";
-
-// const ImagesSlider = () => {
-//   const cards = Array.from({ length: 36 }, (_, index) => ({
-//     id: index + 1,
-//     title: `RENE `,
-//     mainPrice: 362.0,
-//     afterDiscount: 217.0,
-//     image: "https://cdn.shopify.com/s/files/1/0521/9926/0341/products/CE0124_20AX191_2080999_20B_600x.jpg?v=1680696656",
-//   }));
-
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   const nextSlide = () => {
-//     const nextIndex = currentIndex + 4 >= cards.length ? 0 : currentIndex + 4;
-//     setCurrentIndex(nextIndex);
-//   };
-  
-//   const prevSlide = () => {
-//     const prevIndex = currentIndex - 4 < 0 ? cards.length - 4 : currentIndex - 4;
-//     setCurrentIndex(prevIndex);
-//   };
-
-//   return (
-//     <div className="relative w-full max-w-3xl mx-auto overflow-hidden mt-[3em]">
-//       <div className="flex items-center justify-between">
-//         {/* زر "السابق" */}
-//         <button
-//           className="bg-white shadow-md bg-opacity-50 text-black p-3 rounded-full w-[50px] h-[50px]"
-//           onClick={prevSlide}
-//         >
-//           {"<"}
-//         </button>
-
-//         {/* الكاردات */}
-//         <div className="flex space-x-4 overflow-hidden w-full">
-//           {cards.slice(currentIndex, currentIndex + 4).map((card) => (
-//             <div key={card.id} className="w-1/4 p-2">
-//               <div className="border-none rounded-lg overflow-hidden">
-//                 <img
-//                   src={card.image}
-//                   alt={card.title}
-//                   className="w-full h-48 object-cover"
-//                 />
-//                 <div className="p-4">
-//                   <h3 className="font-bold text-md">{card.title}</h3>
-//                   <p className="text-sm font-thin text-red-600">{`$${card.afterDiscount}`}</p>
-//                   <p className="text-sm font-thin line-through">{`$${card.mainPrice}`}</p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* زر "التالي" */}
-//         <button
-//           className="bg-white shadow-md bg-opacity-50 text-black p-3 rounded-full w-[50px] h-[50px]"
-//           onClick={nextSlide}
-//         >
-//           {">"}
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ImagesSlider;
 
 'use client';
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const ImagesSlider = () => {
@@ -86,7 +19,7 @@ const ImagesSlider = () => {
   useEffect(() => {
     const updateCardsToShow = () => {
       if (window.innerWidth < 640) {
-        setCardsToShow(2); // شاشات صغيرة
+        setCardsToShow(1); // شاشات صغيرة
       } else if (window.innerWidth < 1024) {
         setCardsToShow(3); // شاشات متوسطة
       } else {
@@ -127,8 +60,8 @@ const ImagesSlider = () => {
         {/* الكاردات */}
         <div className="flex space-x-4 w-full">
           {cards.slice(currentIndex, currentIndex + cardsToShow).map((card) => (
-            <div key={card.id} className={`w-1/${cardsToShow} p-2`}>
-              <div className="border-none rounded-lg overflow-hidden">
+            <div key={card.id} className={`w-1/${cardsToShow} p-2 w-full`}>
+              <Link href="/collections" className="border-none rounded-lg overflow-hidden">
                 <img
                   src={card.image}
                   alt={card.title}
@@ -139,7 +72,7 @@ const ImagesSlider = () => {
                   <p className="text-sm font-thin text-red-600">{`$${card.afterDiscount}`}</p>
                   <p className="text-sm font-thin line-through">{`$${card.mainPrice}`}</p>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
