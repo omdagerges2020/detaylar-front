@@ -41,7 +41,7 @@ const LoginPage = () => {
     dispatch(setLoading(true)); // Set loading to true
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/user/login`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/login`,
         {
           method: "POST",
           headers: {

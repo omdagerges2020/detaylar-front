@@ -37,7 +37,7 @@ const Profile = () => {
   useEffect(() => {
     if (userToken && !userData) {
       dispatch(setLoading(true));
-      fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}api/user/login`, {
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/login`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

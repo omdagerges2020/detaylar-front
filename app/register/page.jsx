@@ -58,7 +58,7 @@ const RegisterPage = () => {
     try {
       const res = await axios({
         method: "post",
-        url: `${process.env.NEXT_PUBLIC_API_BASE_URL}api/user/register`,
+        url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/register`,
         headers: {
           token: "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
           "Content-Type": "application/json",

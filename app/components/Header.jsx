@@ -169,7 +169,9 @@ function NavListMenu({ title }) {
 
 const Header = () => {
   const [activeGender, setActiveGender] = useState("WOMEN");
-  const { headerCategories } = useSelector((state) => state.headerCategoriesData);
+  const { headerCategories } = useSelector(
+    (state) => state.headerCategoriesData
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -252,7 +254,14 @@ const Header = () => {
                 href={{ pathname: "/", query: { gender: gender?.gender } }}
                 key={index}
               >
-                <Button onClick={()=>setActiveGender(gender.gender)} className={`${activeGender === gender.gender ? "bg-white text-black" : "bg-transparent text-white"} font-normal uppercase text-[12px] px-3 w-[80px] rounded-none`}>
+                <Button
+                  onClick={() => setActiveGender(gender.gender)}
+                  className={`${
+                    activeGender === gender.gender
+                      ? "bg-white text-black"
+                      : "bg-transparent text-white"
+                  } font-normal uppercase text-[12px] px-3 w-[80px] rounded-none`}
+                >
                   {gender?.gender}
                 </Button>
               </Link>
@@ -354,8 +363,10 @@ const Header = () => {
 
             {/* nav links */}
             <div className="flex flex-col justify-center items-center">
-              <Image width={40} height={40} src={`/assets/images/logo.png`}/>
-              <h1 className="tracking-[.5em] font-[600] text-[30px]">DETAYLAR</h1>
+              <Image width={40} height={40} src={`/assets/images/logo.png`} />
+              <h1 className="tracking-[.5em] font-[600] text-[30px]">
+                DETAYLAR
+              </h1>
             </div>
             {/* icons */}
             <div className="flex flex-col lg:flex-row text-[25px] font-bold gap-2">
@@ -484,11 +495,19 @@ const Header = () => {
             ))} */}
 
             <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row gap-6 lg:p-1">
-              {activeGender === "WOMEN" ?  headerCategories?.women?.map((li, index)=>(
-                <NavListMenu key={index} title={li.category_description.name} />
-            )) : headerCategories?.men?.map((li, index)=>(
-              <NavListMenu key={index} title={li.category_description.name} />
-            ))}
+              {activeGender === "WOMEN"
+                ? headerCategories?.women?.map((li, index) => (
+                    <NavListMenu
+                      key={index}
+                      title={li.category_description.name}
+                    />
+                  ))
+                : headerCategories?.men?.map((li, index) => (
+                    <NavListMenu
+                      key={index}
+                      title={li.category_description.name}
+                    />
+                  ))}
             </List>
           </div>
         </div>
