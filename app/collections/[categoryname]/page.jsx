@@ -22,9 +22,6 @@ export default function Home({ params }) {
   
   const [pageHeight, setPageHeight] = useState(null);
 
-  // window.addEventListener("scroll", () => {
-  //   setPageHeight(window.scrollY);
-  // });
 
 
   useEffect(() => {
