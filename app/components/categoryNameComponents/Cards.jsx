@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-const Cards = () => {
+const Cards = ({products}) => {
+  console.log(products);
+  
   const cards = Array.from({ length: 48 }, (_, index) => ({
     id: index + 1,
     title: `RENE CAOVILLENA`,

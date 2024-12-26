@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getClollections = createAsyncThunk(
+export const getCategoryProducts = createAsyncThunk(
   "getcollections",
   async (id, ThunkAPI) => {
     const { rejectWithValue } = ThunkAPI;
 
     const options = {
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/getCategories`,
+      url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getProductByCategory/6`,
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
         "Content-Type": "application/json",
@@ -17,9 +17,7 @@ export const getClollections = createAsyncThunk(
 
     try {
       const response = await axios(options);
-      console.log(response.data);
-      
-  
+      // console.log(response.data.categoryData);
       return response.data;
     } catch (err) {
       return rejectWithValue(err);
@@ -27,26 +25,26 @@ export const getClollections = createAsyncThunk(
   }
 );
 
-const getCollectionsSlice = createSlice({
-  name: "getcollectionsslice",
+const cateoryProductsSlice = createSlice({
+  name: "getCategoryProducts",
   initialState: {
     loading: false,
     erorr: null,
-    collections: [],
+    categoryDataProducts: null,
   },
   extraReducers: (builder) => {
-    builder.addCase(getClollections.pending, (state) => {
+    builder.addCase(getCategoryProducts.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getClollections.fulfilled, (state, action) => {
+    builder.addCase(getCategoryProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.collections = action.payload;
+      state.categoryDataProducts = action.payload;
     });
-    builder.addCase(getClollections.rejected, (state, action) => {
+    builder.addCase(getCategoryProducts.rejected, (state, action) => {
       state.loading = false;
-      state.erorr = action.payload.message;
+      state.erorr = action.payload;
     });
   },
 });
 
-export const collectionData = getCollectionsSlice.reducer;
+export const categoryProductsData = cateoryProductsSlice.reducer;

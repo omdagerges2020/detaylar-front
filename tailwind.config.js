@@ -13,6 +13,9 @@ module.exports = ({
       screens: {
         'special': '900px',
       },
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+      },
       // backgroundImage: {
       //   'hero-pattern': "url(/assets/images/img-1.png)",
       // }

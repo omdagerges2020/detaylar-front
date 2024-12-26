@@ -12,6 +12,7 @@ import { TbRuler2 } from "react-icons/tb";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Image from "next/image";
+import { FaChevronDown, FaChevronRight, FaMinus, FaPlus } from "react-icons/fa";
 
 const ProductGallery = ({ images }) => {
   const imageRefs = useRef([]);

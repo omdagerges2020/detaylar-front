@@ -7,12 +7,13 @@ import {  Card,
   Button} from "@/app/ClientImports";
 import "./collection.css";
 import { getDataCollections } from "../ServerRequests";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getClollections } from "../redux-system/slices/collectionsSlice";
+import Link from "next/link";
+
 
 const page = async () => {
-  const {data} = await getDataCollections() 
-  
+  const {data} = await getDataCollections() ;
+  // console.log(data, 'data From Collection Page');
+  const imgUrl = `http://192.168.1.117/detaylar/`;  
   return (
     <div className="px-5 flex flex-col justify-center items-center w-full mt-[10em]">
       <h1 className="text-2xl mt-[2em] tracking-widest font-thin">
@@ -29,7 +30,8 @@ const page = async () => {
               floated={false}
               shadow={false}
               color="transparent"
-              className="absolute inset-0 bg-top m-0 h-full w-full rounded-none bg-[url('https://thahab.com/cdn/shop/files/8027993243829_9a0cff92-d0e7-462a-9089-b90b5bd00d10_750x960.jpg?v=1727689412')] bg-cover"
+              className="absolute inset-0 bg-top m-0 h-full w-full rounded-none"
+              style={{ backgroundImage:`url(${imgUrl}.${card.image})`, backgroundSize: 'cover' }}
             >
               <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50" />
             </CardHeader>
@@ -38,12 +40,12 @@ const page = async () => {
                 variant="h5"
                 className="mb-4 absolute bottom-[6rem] text-white text-2xl left-[-3rem] w-full"
               >
-                <p>{card.category_description.name}</p>
+                <p className = 'uppercase' >{card.category_description.name}</p>
               </div>
               <div className="absolute bottom-6 w-full left-[-3rem]">
-                <Button className="btn">
+                <Link href={`/collections/${card.category_description.name}`} className="btn">
                   View Products
-                </Button>
+                </Link>
               </div>
             </CardBody>
           </Card>

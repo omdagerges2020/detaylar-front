@@ -12,7 +12,6 @@ import Aboutus from "./components/homeComponents/Aboutus";
 import { useSearchParams } from "next/navigation";
 import MenBanner from "./components/homeComponents/MenBanner";
 
-
 const page = () => {
   const searchParams = useSearchParams();
   const gender = searchParams.get("gender");
