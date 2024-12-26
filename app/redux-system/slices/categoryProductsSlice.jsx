@@ -8,6 +8,7 @@ export const getCategoryProducts = createAsyncThunk(
 
     const options = {
       method: "GET",
+
       url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/getProductByCategory/${id}`,
       headers: {
         "token": "RuQChqz2FqJkP6wMAQiVlLx5OTRIXAPPWEB",
@@ -18,8 +19,6 @@ export const getCategoryProducts = createAsyncThunk(
     try {
       const response = await axios(options);
       // console.log(response.data.categoryData);
-      
-  
       return response.data;
     } catch (err) {
       return rejectWithValue(err);
@@ -49,4 +48,6 @@ const cateoryProductsSlice = createSlice({
   },
 });
 
+
 export const categoryProductsData = cateoryProductsSlice.reducer;
+

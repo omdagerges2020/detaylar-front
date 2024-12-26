@@ -1,4 +1,3 @@
-
 'use client'
 import { useEffect, useState } from "react";
 import HeadingPart from "@/app/components/productComponents/HeadingPart";
@@ -8,6 +7,7 @@ import Cards from "@/app/components/categoryNameComponents/Cards";
 import RecentlyViewed from "@/app/components/categoryNameComponents/RecentlyViewed";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryProducts } from "@/app/redux-system/slices/categoryProductsSlice";
+
 // import { useSearchParams } from 'next/navigation';
 
 export default function Home({ params }) {
@@ -19,6 +19,7 @@ export default function Home({ params }) {
   // console.log(categoryDataProducts?.productsList);
   console.log(categoryDataProducts);
   
+
   
   const [pageHeight, setPageHeight] = useState(null);
 
@@ -34,6 +35,7 @@ export default function Home({ params }) {
   }, []);
 
   const dispatch = useDispatch();
+
 
   useEffect(()=>{
     dispatch(getCategoryProducts(params?.categoryname));

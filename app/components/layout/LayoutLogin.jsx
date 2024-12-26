@@ -1,5 +1,4 @@
 import React from 'react'
-
 const LayoutLogin = ({children}) => {
   return (
     <div>

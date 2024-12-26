@@ -3,23 +3,7 @@ import React from "react";
 
 const Cards = ({products}) => {
   console.log(products);
-  // console.log(categoryName);
 
-  // console.log(categoryID);
-  
-  // const cards = Array.from({ length: 48 }, (_, index) => ({
-  //   id: index + 1,
-  //   title: `RENE CAOVILLENA`,
-  //   kind: "BOWS SANDLE",
-  //   description: "105 - CRYSTAL",
-  //   mainPrice: 362.0,
-  //   afterDiscount: 217.0,
-  //   images: {
-  //     main: "https://cdn.shopify.com/s/files/1/0521/9926/0341/products/CE0124_20AX191_2080999_20B_600x.jpg?v=1680696656",
-  //     hover:
-  //       "https://cdn.shopify.com/s/files/1/0521/9926/0341/products/CE0124_20AX191_2080999_600x.jpg?v=1680696656",
-  //   },
-  // }));
   return (
     <div className="w-full flex justify-center lg:w-[calc(100% - 300px)]">
       <div

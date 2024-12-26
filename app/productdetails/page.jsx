@@ -1,11 +1,9 @@
-import React from 'react'
+import Image from 'next/image';
+// import img from '../../public/assets/images/img-1.png'
 
-const page = () => {
+export default function ProductPage() {
+  // const img ="../../public/assets/images/img-1.png";
   return (
-    <div>
-        <h1>Product Details</h1>
-    </div>
-  )
+    <div></div>
+  );
 }
-
-export default page
